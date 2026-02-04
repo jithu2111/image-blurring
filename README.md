@@ -51,9 +51,10 @@ Where `σ` (sigma) controls the blur strength. The kernel is normalized so all w
 
 ## Installation
 
-1. **Clone or navigate to the project directory:**
+1. **Clone the repository:**
    ```bash
-   cd "/Users/jithu/GSU/GSU/Spring 2026/Computer Vision/Module 3 - Image Blurring"
+   git clone git@github.com:jithu2111/image-blurring.git
+   cd image-blurring
    ```
 
 2. **Create a virtual environment (recommended):**
@@ -73,7 +74,7 @@ Where `σ` (sigma) controls the blur strength. The kernel is normalized so all w
 
 4. **Install required packages:**
    ```bash
-   pip install numpy matplotlib scipy scikit-image
+   pip install -r requirements.txt
    ```
 
 ## Usage
@@ -150,35 +151,3 @@ Module 3 - Image Blurring/
 ├── venv/            # Virtual environment (if created)
 └── README.md        # This file
 ```
-
-## Troubleshooting
-
-**FileNotFoundError:**
-- Ensure your image file exists in the same directory as `blurring.py`
-- Check the filename and extension match exactly (case-sensitive on Unix/Linux)
-
-**Import errors:**
-- Make sure all required packages are installed: `pip install numpy matplotlib scipy scikit-image`
-- Activate your virtual environment if you created one
-
-**Plot doesn't display:**
-- If running in a non-interactive environment, add `plt.savefig('output.png')` before `plt.show()`
-
-## Learning Objectives
-
-This project demonstrates:
-1. The equivalence of spatial and frequency domain filtering
-2. Practical implementation of the Convolution Theorem
-3. Efficient image processing using FFT
-4. The importance of proper padding in frequency domain operations
-5. Gaussian blur for noise reduction and image smoothing
-
-## References
-
-- Convolution Theorem: [Wikipedia](https://en.wikipedia.org/wiki/Convolution_theorem)
-- Fast Fourier Transform: [NumPy FFT Documentation](https://numpy.org/doc/stable/reference/routines.fft.html)
-- Gaussian Blur: [Image Processing Fundamentals](https://en.wikipedia.org/wiki/Gaussian_blur)
-
-## License
-
-Educational project for GSU Computer Vision coursework.
