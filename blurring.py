@@ -7,7 +7,7 @@ from skimage import color, io  # Added 'io' for reading files
 # 1. Prepare the Image
 # ---------------------------------------------------------
 # Update this filename to match your actual file (e.g., 'img.jpg' or 'img.png')
-filename = 'image.jpg'
+filename = 'img.png'
 
 try:
     # FIX 1: Read the file into an array first
@@ -77,26 +77,35 @@ fourier_result = np.real(fourier_result)
 difference = np.abs(spatial_result - fourier_result)
 max_diff = np.max(difference)
 
+# Calculate MSE between the two methods
+mse = np.mean((spatial_result - fourier_result) ** 2)
+
 print(f"Maximum difference between methods: {max_diff:.10e}")
+print(f"MSE between spatial and frequency methods: {mse:.10e}")
 
-fig, ax = plt.subplots(1, 3, figsize=(15, 5))
+fig, ax = plt.subplots(1, 4, figsize=(20, 5))
 
-# Plot Spatial Result
-ax[0].imshow(spatial_result, cmap='gray')
-ax[0].set_title('Method A: Spatial Convolution')
+# Plot Original Image
+ax[0].imshow(image, cmap='gray')
+ax[0].set_title('Original Image')
 ax[0].axis('off')
 
-# Plot Fourier Result
-ax[1].imshow(fourier_result, cmap='gray')
-ax[1].set_title('Method B: Fourier Multiplication')
+# Plot Spatial Result
+ax[1].imshow(spatial_result, cmap='gray')
+ax[1].set_title('Method A: Spatial Convolution')
 ax[1].axis('off')
+
+# Plot Fourier Result
+ax[2].imshow(fourier_result, cmap='gray')
+ax[2].set_title('Method B: Fourier Multiplication')
+ax[2].axis('off')
 
 # Plot Difference
 # We use a very small range for vmin/vmax to make any noise visible,
 # though it should be black (zero).
-ax[2].imshow(difference, cmap='gray')
-ax[2].set_title(f'Difference (Max error: {max_diff:.2e})')
-ax[2].axis('off')
+ax[3].imshow(difference, cmap='gray')
+ax[3].set_title(f'Difference (Max: {max_diff:.2e}, MSE: {mse:.2e})')
+ax[3].axis('off')
 
 plt.tight_layout()
 plt.show()
